@@ -1,0 +1,27 @@
+Table Locations {
+  id int pk
+  name varchar
+  guestID int
+}
+
+Table LocationServices {
+  id int pk
+  serviceID int
+  locationID inf
+}
+
+Table Services {
+  id int pk
+  name varchar
+}
+
+Table Guests {
+  id int pk
+  name varchar
+}
+
+Ref: "Guests"."id" < "Locations"."guestID"
+
+Ref: "Services"."id" < "LocationServices"."serviceID"
+
+Ref: "Locations"."id" < "LocationServices"."locationID"
