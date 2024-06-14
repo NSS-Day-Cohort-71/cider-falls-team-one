@@ -1,23 +1,37 @@
-//import getServices() from database.js
-//import getLocations() from database.js
+import { getServices } from "./database.js"
+
 
 //declare variable allServices with value of getServices()
-
+const allServices = getServices()
 //define and export a function called ServiceList
         //function purpose: to use service data to create a list of services the park offers for display 
                 //thinking ahead: how do you add dataset for future click events on each service?
                 //how do you remove the last comma?
 
 //function declaration
-    //declare html variable with value of "<p>Park services: "
+export const ServiceList = () => {
+     //declare html variable with value of "<p>Park services: "
+     let serviceHTML = `<p>Park services: `
     //iterate through allServices using for..of loop
+    for (const service of allServices) {
         //if service.id is less than allService.length
+        if(service.id < allServices.length){
             //append name to html variable with comma following name
-            //else
+            serviceHTML += `${service.name}, `
+        } //else
                 //append name to html variable with no comma
-                    //each name should be an individual element within the overall element to have it's own dataset
-        //append "</p>" to service variable
+            else {
+            serviceHTML += `${service.name}`
+            //each name should be an individual element within the overall element to have it's own dataset
+        }
+    }
+       //append "</p>" to service variable     
+          serviceHTML += `</p>`          
         //return service variable
+        return serviceHTML
+        
+}
+   
 
 //click event for each service:
 
