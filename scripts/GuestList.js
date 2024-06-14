@@ -19,13 +19,3 @@
 // }
 
 
-//?Potentially used for the pairing of guest to there location maybe
-//? export const guestPairings() {
-    
-//? }
-
-//? Maybe potentially do pairings of guests to there wanted service
-//? export const guestServices() {
-
-//? }
-
