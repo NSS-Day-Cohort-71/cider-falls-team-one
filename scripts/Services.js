@@ -17,11 +17,17 @@ export const ServiceList = () => {
         //if service.id is less than allService.length
         if(service.id < allServices.length){
             //append name to html variable with comma following name
-            serviceHTML += `${service.name}, `
+            serviceHTML += `<span data-type="service"
+                                  data-name="${service.name}"
+                                  data-id="${service.id}"
+                                  >${service.name}</span>, `
         } //else
                 //append name to html variable with no comma
             else {
-            serviceHTML += `${service.name}`
+            serviceHTML += `<span data-type="service"
+                                  data-name="${service.name}"
+                                  data-id="${service.id}"
+                                  >${service.name}</span>`
             //each name should be an individual element within the overall element to have it's own dataset
         }
     }
