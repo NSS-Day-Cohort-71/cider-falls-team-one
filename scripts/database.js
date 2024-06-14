@@ -154,10 +154,13 @@ const database = {
 }
 
 export const getLocations = () =>
-    database.locations.map((location) ({ ...location }))
+    database.locations.map((location) => ({ ...location }))
 
 export const getServices = () =>
-    database.services.map((service) ({ ...service }))
+    database.services.map((service) => ({ ...service }))
 
 export const getGuests = () =>
-    database.guests.map((guest) ({ ...guest }))
+    database.guests.map((guest) => ({ ...guest }))
+
+export const getLocationServices = () =>
+    database.locationServices.map((locationService) => ({ ...locationService }))
