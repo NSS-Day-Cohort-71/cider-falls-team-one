@@ -1,7 +1,4 @@
 //import { getGuests } from "./database.js"
-//?import { getLocations } from "./database.js"
-
-//? locations = getLocations()
 
 //guests = getGuests()
 
