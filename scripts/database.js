@@ -152,3 +152,12 @@ const database = {
         },
     ]
 }
+
+export const getLocations = () =>
+    database.locations.map((location) ({ ...location }))
+
+export const getServices = () =>
+    database.services.map((service) ({ ...service }))
+
+export const getGuests = () =>
+    database.guests.map((guest) ({ ...guest }))
