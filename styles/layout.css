@@ -1,0 +1,45 @@
+header, footer {
+    text-align: center;
+}
+
+
+
+#locationContainer {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+    padding-left: 50px;
+}
+
+#guestsContainer {
+    width: 20%; 
+    float: right;
+    margin: 0 auto;
+}
+
+.park-area {
+    border: 1px solid burlywood;
+    width: 15rem;
+    height: 7.5rem;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    display: inline-block;
+    line-height: px;
+    justify-content: space-around;
+}
+
+.park-area h3 {
+    font-size: 15px;
+}
+
+#layout {
+    display: flex;
+    justify-content: space-around;
+}
+
+#servicesContainer {
+    padding-left: 50px;
+}
