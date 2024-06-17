@@ -20,32 +20,31 @@ function getNumberOfGuestsForParkArea(locationId) {
 // Function to get the services for a specific park area
 function getLocationServiceMatches(locationId, allLocationServices, allServices) {
     // Filter the location services to get those that match the locationId
-    const locationServices = allLocationServices.filter(locationService => locationService.locationId === location.id);
-
+    const locationServices = allLocationServices.filter(locationService => locationService.locationId === locationId);
 
     // Map the location services to get the corresponding service names
     const services = locationServices.map(ls => {
-        const service = allServices.find(service => service.id === ls.serviceId);
-        if (service) {
-            return service.name;
-        } else {
-            return '';
-        }
+        const serviceIds = ls.serviceId;
+        const serviceNames = serviceIds.map(serviceId => {
+            const service = allServices.find(service => service.id === serviceId);
+            return service ? service.name : '';
+        });
+        return serviceNames.join(', ');
     });
 
     // Return the list of service names
-    return services;
+    return services.join(', ');
 }
 
 // Define and export a function called LocationList
-function LocationList() {
+export function LocationList() {
     // Start building the HTML string for park locations
     let html = "<div class='park-locations'>";
 
     // Iterate through allLocations using a for..of loop
     for (const location of allLocations) {
         // Get services for the current park area
-        const servicesList = getLocationServiceMatches(location, allLocationServices, allServices).join(", ");
+        const servicesList = getLocationServiceMatches(location.id, allLocationServices, allServices);
 
         // Each name should be an individual element within the overall element to have its own dataset
         html += `
@@ -82,6 +81,3 @@ document.addEventListener("click", (clickEvent) => {
         window.alert(`Number of guests in ${parkAreaElement.querySelector('h3').textContent}: ${numberOfGuests}`);
     }
 });
-
-// Export the LocationList function to be used in other modules
-export { LocationList };
