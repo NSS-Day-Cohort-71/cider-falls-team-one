@@ -3,7 +3,7 @@ const database = {
         {
             id: 3,
             name: "Lodge",
-            guestId:[3, 9]
+            guestId:[3, 9, 12]
         },
         {
             id: 2,
@@ -13,12 +13,12 @@ const database = {
         {
             id: 1,
             name: "Chamfort River",
-            guestId:[1, 7]
+            guestId:[1, 7, 13, 14]
         },
         {
             id: 4,
             name: "Gander River",
-            guestId:[4, 10]
+            guestId:[4, 10, 15, 16, 17]
         },
         {
             id: 5,
@@ -150,6 +150,30 @@ const database = {
             id: 11,
             name: "Fiona Drexel"
         },
+        {
+            id: 12, 
+            name: "Cody Clark"
+        }, 
+        {
+            id: 13,
+            name: "Caleb Ford"
+        }, 
+        {
+            id: 14, 
+            name: "Nicholas Winkler"
+        }, 
+        {
+            id: 15,
+            name: "Lane Dillard"
+        },
+        {
+            id: 16,
+            name: "Coach Steve"
+        }, 
+        {
+            id: 17,
+            name: "Greg Korte"
+        }
     ]
 }
 
