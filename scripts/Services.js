@@ -1,4 +1,4 @@
-import { getServices } from "./database.js"
+import { getLocations, getServices } from "./database.js"
 
 
 //declare variable allServices with value of getServices()
@@ -42,10 +42,21 @@ export const ServiceList = () => {
 //click event for each service:
 
 //addEventListener to document
+document.addEventListener(
     //declare as "click",
+    "click",
     //declare clickEvent function to run
+    (clickEvent) => {
     //declare variable itemClicked with value clickEvent.target
+    const itemClicked = clickEvent.target
     //if itemClicked dataset.type equals "service"
+    if(itemClicked.dataset.type === "service"){
         //declare variable allLocations with value of getLocations()
+        const allLocations = getLocations()
         //declare variable locationsThatOffer with value of {paringFunctionName}() passing in itemClicked and allLocations
+        const locationsThatOffer = pairingFunctionName(arg1, arg2, arg3)
         //window alert "service.name is available in locationsThatOffer"
+        window.alert(`${itemClicked.dataset.name} is available in ${locationsThatOffer}`)
+        }
+    }
+)
