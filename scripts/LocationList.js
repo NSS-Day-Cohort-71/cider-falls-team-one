@@ -1,6 +1,6 @@
 // Import necessary data from the database module
 import { getLocations, getServices, getLocationServices } from './database.js';
-import { getLocationServiceMatches } from './pairings.js';
+import { getLocationServiceMatches } from './Pairings.js';
 
 // Get all locations, services, and location services from the database
 const allLocations = getLocations();
