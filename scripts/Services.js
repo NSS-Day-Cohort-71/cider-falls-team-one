@@ -59,10 +59,16 @@ document.addEventListener(
         //window alert "service.name is available in locationsThatOffer"
         let locationsThatOfferString = ``
         for (const location of locationsThatOffer) {
-            if(locationsThatOffer.findIndex(location) < )
+            if(locationsThatOffer.length === 1) {
+                locationsThatOfferString += `${location}.`
+            } else if(locationsThatOffer.indexOf(location) === locationsThatOffer.length - 1){
+                locationsThatOfferString += `and ${location}.`
+            } else {
+                locationsThatOfferString += `${location}, `
+            }
             
         }
-        window.alert(`${itemClicked.dataset.name} is available in ${locationsThatOffer}`)
+        window.alert(`${itemClicked.dataset.name} is available in ${locationsThatOfferString}`)
         }
     }
 )
