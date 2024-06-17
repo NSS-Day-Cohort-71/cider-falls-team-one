@@ -1,5 +1,5 @@
 import { getLocationServices, getLocations, getServices } from "./database.js"
-
+import { getLocationsPerService } from "./Pairings.js"
 
 //declare variable allServices with value of getServices()
 const allServices = getServices()
@@ -55,13 +55,13 @@ document.addEventListener(
         const allLocations = getLocations()
         const allServiceList = getLocationServices()
         //declare variable locationsThatOffer with value of {paringFunctionName}() passing in itemClicked and allLocations
-        const locationsThatOffer = getLocationsPerService(itemClicked, allServiceList, allLocations)
+        const locationsThatOffer = getLocationsPerService(parseInt(itemClicked.dataset.id), allServiceList, allLocations)
         //window alert "service.name is available in locationsThatOffer"
-        const locationsThatOfferString = ``
-        locationsThatOffer.forEach(location => {
-            locationsThatOfferString += location
-        });
-        window.alert(`${itemClicked.dataset.name} is available in ${locationsThatOfferString}`)
+        // const locationsThatOfferString = ``
+        // locationsThatOffer.forEach(location => {
+        //     locationsThatOfferString += location
+        // });
+        window.alert(`${itemClicked.dataset.name} is available in ${locationsThatOffer}`)
         }
     }
 )
