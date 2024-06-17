@@ -29,6 +29,11 @@ header, footer {
     display: inline-block;
     justify-content: space-around;
     overflow: hidden;
+    flex-shrink: 0;
+}
+
+#locationContainer .park-area {
+    width: 23.3%;
 }
 
 .park-area h3 {
