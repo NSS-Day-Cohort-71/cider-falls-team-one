@@ -1,48 +1,87 @@
-// // Import necessary data from the database module
-// import { parkAreas, services, guests, guestVisits } from './database.js';
-// import { getParkAreaServices } from './pairings.js'; // import from pairings module
+// Import necessary data from the database module
+import { getLocations, getServices, getLocationServices } from './database.js';
 
-// // Function to get the number of guests for a specific park area
-// function getNumberOfGuestsForParkArea(parkAreaId) {
-//     return guestVisits.filter(guestVisit => guestVisit.park_area_id === parkAreaId).length;
-// }
+// Get all locations, services, and location services from the database
+const allLocations = getLocations();
+const allServices = getServices();
+const allLocationServices = getLocationServices();
 
-// // Define and export a function called LocationList
-// function LocationList() {
-//     let html = "<div class='park-locations'>";
+// Function to get the number of guests for a specific park area
+function getNumberOfGuestsForParkArea(locationId) {
+    // Find the location that matches the locationId
+    const location = allLocations.find(location => location.id === locationId);
+    if (location) {
+        // Return the number of guests in the location
+        return location.guestId.length;
+    }
+    return 0; // Return 0 if location is not found
+}
 
-//     // Iterate through allParkAreas using a for..of loop
-//     for (const area of allParkAreas) {
-//         // Get services offered in the current park area using getParkAreaServices from pairings module
-//         const areaServices = getParkAreaServices(area.id);
+// Function to get the services for a specific park area
+function getLocationServiceMatches(locationId, allLocationServices, allServices) {
+    // Filter the location services to get those that match the locationId
+    const locationServices = allLocationServices.filter(locationService => locationService.locationId === location.id);
 
-//         // Create a comma-separated list of service names
-//         const servicesList = areaServices.map(service => service.name).join(", ");
 
-//         // Construct HTML for each park area with its services
-//         html += `
-//             <div class="park-area" data-type="location" data-id="${area.id}">
-//                 <h3>${area.name}</h3>
-//                 <p>${servicesList}</p>
-//             </div>
-//         `;
-//     }
+    // Map the location services to get the corresponding service names
+    const services = locationServices.map(ls => {
+        const service = allServices.find(service => service.id === ls.serviceId);
+        if (service) {
+            return service.name;
+        } else {
+            return '';
+        }
+    });
 
-//     html += "</div>";
-//     return html;
-// }
+    // Return the list of service names
+    return services;
+}
 
-// // Click event listener for each location to display the number of guests
-// document.addEventListener("click", (clickEvent) => {
-//     const itemClicked = clickEvent.target.closest('.park-area');
+// Define and export a function called LocationList
+function LocationList() {
+    // Start building the HTML string for park locations
+    let html = "<div class='park-locations'>";
 
-//     if (itemClicked && itemClicked.dataset.type === "location") {
-//         const locationId = parseInt(itemClicked.dataset.id);
-//         const numberOfGuests = getNumberOfGuestsForParkArea(locationId);
+    // Iterate through allLocations using a for..of loop
+    for (const location of allLocations) {
+        // Get services for the current park area
+        const servicesList = getLocationServiceMatches(location, allLocationServices, allServices).join(", ");
 
-//         window.alert(`Number of guests in ${itemClicked.querySelector('h3').textContent}: ${numberOfGuests}`);
-//     }
-// });
+        // Each name should be an individual element within the overall element to have its own dataset
+        html += `
+            <div 
+            class="park-area" 
+            data-type="location" 
+            data-id="${location.id}">
+                <h3>${location.name}</h3>
+                <p>Services: ${servicesList}</p>
+            </div>
+        `;
+    }
 
-// // Export the LocationList function to be used in other modules
-// export { LocationList };
+    html += "</div>";
+    return html;
+}
+
+// Add a click event listener to the document
+document.addEventListener("click", (clickEvent) => {
+    const itemClicked = clickEvent.target;
+
+    // Check if the clicked element or its parent has the class 'park-area'
+    if (itemClicked.classList.contains('park-area') || itemClicked.closest('.park-area')) {
+        // If the clicked element does not have the class 'park-area', find the closest parent with the class 'park-area'
+        const parkAreaElement = itemClicked.classList.contains('park-area') ? itemClicked : itemClicked.closest('.park-area');
+
+        // Get the location ID from the data-id attribute
+        const locationId = parseInt(parkAreaElement.getAttribute('data-id'));
+
+        // Get the number of guests for the clicked park area
+        const numberOfGuests = getNumberOfGuestsForParkArea(locationId);
+
+        // Display an alert with the number of guests in the clicked park area
+        window.alert(`Number of guests in ${parkAreaElement.querySelector('h3').textContent}: ${numberOfGuests}`);
+    }
+});
+
+// Export the LocationList function to be used in other modules
+export { LocationList };
