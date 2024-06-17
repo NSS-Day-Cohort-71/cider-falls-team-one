@@ -1,5 +1,6 @@
 // Import necessary data from the database module
 import { getLocations, getServices, getLocationServices } from './database.js';
+import { getLocationServiceMatches } from './pairings.js';
 
 // Get all locations, services, and location services from the database
 const allLocations = getLocations();
@@ -17,30 +18,6 @@ function getNumberOfGuestsForParkArea(locationId) {
     return 0; // Return 0 if location is not found
 }
 
-// Function to get the services for a specific park area
-function getLocationServiceMatches(locationId, allLocationServices, allServices) {
-    // Filter the location services to get those that match the locationId
-    const locationServices = allLocationServices.filter(locationService => locationService.locationId === locationId);
-
-    // Then, it maps over those locationServices to get the actual service names
-    const services = locationServices.map(ls => {
-        const serviceIds = ls.serviceId;
-        const serviceNames = [];
-        
-        for (const serviceId of serviceIds) {
-            const service = allServices.find(service => service.id === serviceId);
-            if (service) {
-                serviceNames.push(service.name);
-            }
-        }
-        
-        return serviceNames.join(', ');
-    });
-
-    // Finally, it joins all the service names into one string and returns it
-    return services.join(', ');
-}
-
 // Define and export a function called LocationList
 export function LocationList() {
     // Start building the HTML string for park locations
@@ -49,7 +26,7 @@ export function LocationList() {
     // Iterate through allLocations using a for..of loop
     for (const location of allLocations) {
         // Get services for the current park area
-        const servicesList = getLocationServiceMatches(location.id, allLocationServices, allServices);
+        const servicesList = getLocationServiceMatches(location, allLocationServices, allServices).join(", ");
 
         // Each name should be an individual element within the overall element to have its own dataset
         html += `
