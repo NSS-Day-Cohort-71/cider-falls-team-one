@@ -1,7 +1,10 @@
 //import services()
 //import locations()
 import { guestList } from "./GuestList.js"
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/feature/working_main
 
 //get container from index.html and save to a variable using document.query selector
 const container = document.querySelector("#container")
