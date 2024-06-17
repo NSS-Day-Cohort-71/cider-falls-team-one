@@ -35,11 +35,11 @@ export const getLocationServiceMatches = (locationObject, locationServicesArray,
 }
 
 
-export const getLocationsPerService = (serviceObject, locationServicesArray, locationsArray) => {
+export const getLocationsPerService = (itemClicked, locationServicesArray, locationsArray) => {
     let matchedLocations = []
 
     for (const locationService of locationServicesArray) {
-        if (locationService.serviceId.includes(serviceObject.id)) {
+        if (locationService.serviceId.includes(itemClicked.id)) {
             let locationId = locationService
             for (const location of locationsArray) {
                 if (locationId.id === location.id) {
