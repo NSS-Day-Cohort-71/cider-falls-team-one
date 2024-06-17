@@ -22,17 +22,22 @@ function getLocationServiceMatches(locationId, allLocationServices, allServices)
     // Filter the location services to get those that match the locationId
     const locationServices = allLocationServices.filter(locationService => locationService.locationId === locationId);
 
-    // Map the location services to get the corresponding service names
+    // Then, it maps over those locationServices to get the actual service names
     const services = locationServices.map(ls => {
         const serviceIds = ls.serviceId;
-        const serviceNames = serviceIds.map(serviceId => {
+        const serviceNames = [];
+        
+        for (const serviceId of serviceIds) {
             const service = allServices.find(service => service.id === serviceId);
-            return service ? service.name : '';
-        });
+            if (service) {
+                serviceNames.push(service.name);
+            }
+        }
+        
         return serviceNames.join(', ');
     });
 
-    // Return the list of service names
+    // Finally, it joins all the service names into one string and returns it
     return services.join(', ');
 }
 
