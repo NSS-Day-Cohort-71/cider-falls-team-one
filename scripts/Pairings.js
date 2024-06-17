@@ -7,9 +7,9 @@ const locations = getLocations()
 const services = getServices()
 const locationServices = getLocationServices()
 
-//declare a function that finds what services a location provides
+// declare a function that finds what services a location provides
 
-//function should take three parameters? (location object, locationservicesarray, servicesarray)
+// function should take three parameters? (object, locationservicesarray, array)
 export const getLocationServiceMatches = (locationObject, locationServicesArray, servicesArray) => {
     //declare an empty array to hold matched services
     let matchedServices = []
@@ -32,4 +32,21 @@ export const getLocationServiceMatches = (locationObject, locationServicesArray,
 
     // Return the matched services
     return matchedServices
+}
+
+
+export const getLocationsPerService = (itemClicked, locationServicesArray, locationsArray) => {
+    let matchedLocations = []
+
+    for (const locationService of locationServicesArray) {
+        if (locationService.serviceId.includes(itemClicked.dataset.id)) {
+            let locationId = locationService
+            for (const location of locationsArray) {
+                if (locationId.id === location.id) {
+                    matchedLocations.push(location.name)
+                    }
+                }
+        }
+    }
+    return matchedLocations
 }

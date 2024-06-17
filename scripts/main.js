@@ -2,6 +2,7 @@
 //import locations()
 //import guests()
 
+
 //get container from index.html and save to a variable using document.query selector
 
 //set a base html string to be added to the dom later ie mainHTML
