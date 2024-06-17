@@ -27,8 +27,8 @@ header, footer {
     padding: 20px;
     margin: 20px;
     display: inline-block;
-    line-height: px;
     justify-content: space-around;
+    overflow: hidden;
 }
 
 .park-area h3 {

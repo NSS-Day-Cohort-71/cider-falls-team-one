@@ -1,11 +1,3 @@
-//import locations
-//import services
-//import location services
-import { getLocations, getLocationServices, getServices } from "./database.js"
-
-const locations = getLocations()
-const services = getServices()
-const locationServices = getLocationServices()
 
 // declare a function that finds what services a location provides
 
