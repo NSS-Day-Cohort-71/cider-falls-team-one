@@ -1,4 +1,4 @@
-import { getServices } from "./database.js"
+import { getLocationServices, getLocations, getServices } from "./database.js"
 
 
 //declare variable allServices with value of getServices()
@@ -11,7 +11,7 @@ const allServices = getServices()
 //function declaration
 export const ServiceList = () => {
      //declare html variable with value of "<p>Park services: "
-     let serviceHTML = `<p>Park services: `
+     let serviceHTML = `<p id="parkServices">Park services: `
     //iterate through allServices using for..of loop
     for (const service of allServices) {
         //if service.id is less than allService.length
@@ -42,10 +42,26 @@ export const ServiceList = () => {
 //click event for each service:
 
 //addEventListener to document
+document.addEventListener(
     //declare as "click",
+    "click",
     //declare clickEvent function to run
+    (clickEvent) => {
     //declare variable itemClicked with value clickEvent.target
+    const itemClicked = clickEvent.target
     //if itemClicked dataset.type equals "service"
+    if(itemClicked.dataset.type === "service"){
         //declare variable allLocations with value of getLocations()
+        const allLocations = getLocations()
+        const allServiceList = getLocationServices()
         //declare variable locationsThatOffer with value of {paringFunctionName}() passing in itemClicked and allLocations
+        const locationsThatOffer = getLocationsPerService(itemClicked, allServiceList, allLocations)
         //window alert "service.name is available in locationsThatOffer"
+        const locationsThatOfferString = ``
+        locationsThatOffer.forEach(location => {
+            locationsThatOfferString += location
+        });
+        window.alert(`${itemClicked.dataset.name} is available in ${locationsThatOfferString}`)
+        }
+    }
+)
