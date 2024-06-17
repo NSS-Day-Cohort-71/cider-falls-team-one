@@ -1,10 +1,6 @@
-//import services()
-//import locations()
+import { ServiceList } from "./Services.js"
 import { guestList } from "./GuestList.js"
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/feature/working_main
+import { LocationList } from "./LocationList.js"
 
 //get container from index.html and save to a variable using document.query selector
 const container = document.querySelector("#container")
@@ -14,15 +10,16 @@ const container = document.querySelector("#container")
 
 const mainHTML = `
 <article class="details">
-    <section class="guests">
+    <section id="servicesContainer">
+        ${ServiceList()}
+    </section>
+    <section id="locationContainer">
+        ${LocationList()}
+    </section>
+    <section id="guestsContainer">
         ${guestList()}
     </section>
-    <section class="locationService">
     
-    </section>
-    <section class="location">
-    
-    </section>
     
 </article>
 `
