@@ -57,10 +57,11 @@ document.addEventListener(
         //declare variable locationsThatOffer with value of {paringFunctionName}() passing in itemClicked and allLocations
         const locationsThatOffer = getLocationsPerService(parseInt(itemClicked.dataset.id), allServiceList, allLocations)
         //window alert "service.name is available in locationsThatOffer"
-        // const locationsThatOfferString = ``
-        // locationsThatOffer.forEach(location => {
-        //     locationsThatOfferString += location
-        // });
+        let locationsThatOfferString = ``
+        for (const location of locationsThatOffer) {
+            if()
+            
+        }
         window.alert(`${itemClicked.dataset.name} is available in ${locationsThatOffer}`)
         }
     }
