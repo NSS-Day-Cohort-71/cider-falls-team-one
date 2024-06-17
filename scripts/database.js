@@ -1,9 +1,9 @@
 const database = {
     locations: [
         {
-            id: 1,
-            name: "Chamfort River",
-            guestId:[1, 7]
+            id: 3,
+            name: "Lodge",
+            guestId:[3, 9]
         },
         {
             id: 2,
@@ -11,9 +11,9 @@ const database = {
             guestId:[2, 8]
         },
         {
-            id: 3,
-            name: "Lodge",
-            guestId:[3, 9]
+            id: 1,
+            name: "Chamfort River",
+            guestId:[1, 7]
         },
         {
             id: 4,
