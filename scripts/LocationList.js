@@ -20,12 +20,17 @@ function getNumberOfGuestsForParkArea(locationId) {
 // Function to get the services for a specific park area
 function getLocationServiceMatches(locationId, allLocationServices, allServices) {
     // Filter the location services to get those that match the locationId
-    const locationServices = allLocationServices.filter(ls => ls.locationId === locationId);
+    const locationServices = allLocationServices.filter(locationService => locationService.locationId === location.id);
+
 
     // Map the location services to get the corresponding service names
     const services = locationServices.map(ls => {
         const service = allServices.find(service => service.id === ls.serviceId);
-        return service ? service.name : '';
+        if (service) {
+            return service.name;
+        } else {
+            return '';
+        }
     });
 
     // Return the list of service names
@@ -40,7 +45,7 @@ function LocationList() {
     // Iterate through allLocations using a for..of loop
     for (const location of allLocations) {
         // Get services for the current park area
-        const servicesList = getLocationServiceMatches(location.id, allLocationServices, allServices).join(", ");
+        const servicesList = getLocationServiceMatches(location, allLocationServices, allServices).join(", ");
 
         // Each name should be an individual element within the overall element to have its own dataset
         html += `
