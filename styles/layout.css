@@ -20,7 +20,10 @@ header, footer {
 }
 
 .park-area {
-    border: 1px solid burlywood;
+    border: 1px solid rgb(27, 25, 23);
+    background-color: burlywood;
+    border-radius: 12px;
+    box-shadow: 2px 2px grey;
     width: 15rem;
     height: 7.5rem;
     text-align: center;
@@ -38,6 +41,7 @@ header, footer {
 
 .park-area h3 {
     font-size: 15px;
+    
 }
 
 #layout {
@@ -47,4 +51,5 @@ header, footer {
 
 #servicesContainer {
     padding-left: 50px;
+    text-align: center;
 }
